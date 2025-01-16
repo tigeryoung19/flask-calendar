@@ -1,15 +1,15 @@
-from flask import Flask
+from flask import Flask, send_from_directory
 import psycopg2
 
 app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return 'Hello, World!'
+    return send_from_directory(os.path.join(app.root_path, 'static'), 'c.html')
 
 @app.route('/about')
 def about():
-    return 'About'
+    return 'About Sophia, she is a tiger not a puma.'
 
 def query_users():
     try:
